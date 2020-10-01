@@ -1,4 +1,4 @@
-# MC Header Removal
+# Remove MC Headers
 ### A simple desktop app that removes Mail Chimp data from HTML files
 
 If you've ever tried sending an exported Mail Chimp HTML file through a 3rd-party mail service, you might have noticed that your email sometimes contains unwanted text such as:
