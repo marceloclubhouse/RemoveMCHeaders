@@ -14,5 +14,11 @@ This app removes those headers automatically with an easy to use interface that 
 1. Click on browse and find a Mail Chimp-exported HTML file you want to remove the headers from.
 2. Click on remove headers and save the new file
 
+## Download
+Download the latest release directly from GitHub (currently only available on MacOS)
+```
+https://github.com/marceloclubhouse/RemoveMCHeaders/releases/tag/v0.1.0
+```
+
 ## License
 This project is licensed under the GPL v3 license. See LICENSE.txt for more information.
