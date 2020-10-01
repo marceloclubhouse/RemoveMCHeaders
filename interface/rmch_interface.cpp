@@ -1,6 +1,15 @@
-//
-// Created by Marcelo on 9/30/20.
-//
+/*
+ * Remove MC Headers
+ * Copyright (c) 2020 Marcelo Cubillos
+ * Licensed under the GPLv3, view LICENSE.txt for more information.
+ *
+ * 2020/09/30 - First revision
+ * 2020/10/01 - Placed I/O within try and catch blocks, added conditionals to
+ *              prevent misuse/crashing of software if it isn't used right.
+ *
+ * rmch_interface.cpp - The main interface object that inherits the QT-generated
+ *                      UI and links the elements to methods.
+ */
 
 #include <fstream>
 #include <iostream>
@@ -30,24 +39,30 @@ RMCHInterface::RMCHInterface(QDialog *parent)
     headers.push_back("*|MC_PREVIEW_TEXT|*");
 }
 
-void RMCHInterface::setInputFileLocation()
+void RMCHInterface::selectInputFileLocation()
 {
+    // Prompt the user to select the input HTML file through
+    // a file dialog
     inputFileLocation = QFileDialog::getOpenFileName(this, tr("Open HTML File"), "", tr("HTML Files (*.html)"));
 }
 
-void RMCHInterface::setOutputFileLocation()
+void RMCHInterface::selectOutputFileLocation()
 {
+    // Prompt the user to save a new HTML file with the headers
+    // removed, using a file dialog
     outputFileLocation = QFileDialog::getSaveFileName(this, tr("Save HTML File"), "", tr("HTML Files (*.html)"));
 }
 
 void RMCHInterface::setStatus(const std::string& status)
 {
+    // Set the status of the software by changing the text
+    // of the status label within the UI
     ui.label_status->setText(QString::fromStdString(status));
 }
 
 void RMCHInterface::selectFile()
 {
-    this->setInputFileLocation();
+    this->selectInputFileLocation();
     if(inputFileLocation != "") {
         ui.lineEdit_location->setText(inputFileLocation);
         this->setStatus("Click remove headers to save the new file.");
@@ -56,13 +71,50 @@ void RMCHInterface::selectFile()
 
 void RMCHInterface::removeHeaders()
 {
+    // Given the file location from ui.lineEdit_location, generate
+    // a new file that doesn't contain the MC headers and prompt
+    // the user to save that new file.
+
+    inputFileLocation = ui.lineEdit_location->text();
+
+    // Verify that the location specified in ui.lineEdit_location is
+    // valid.
+    if(inputFileLocation.toStdString() == "")
+    {
+        this->setStatus("Input file must be specified.");
+        return;
+    }
+    else
+    {
+        try
+        {
+            if(inputFileLocation.toStdString().substr(inputFileLocation.toStdString().length() - 5) != ".html")
+            {
+                this->setStatus("Input file must be HTML");
+                return;
+            }
+        }
+        catch(const std::out_of_range&)
+        {
+            this->setStatus("Input file must be HTML");
+            return;
+        }
+    }
+
+    // Begin I/O
     try
     {
-        this->setOutputFileLocation();
+        this->selectOutputFileLocation();
+        if(outputFileLocation == "")
+        {
+            return;
+        }
+
         std::ofstream outputFile(outputFileLocation.toStdString());
         std::ifstream inputFile(inputFileLocation.toStdString());
         std::string inputLine;
         bool contains;
+
         while (std::getline(inputFile, inputLine))
         {
             contains = false;

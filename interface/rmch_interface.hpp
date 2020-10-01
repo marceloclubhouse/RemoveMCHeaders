@@ -1,11 +1,19 @@
-//
-// Created by Marcelo on 9/30/20.
-//
+/*
+ * Remove MC Headers
+ * Copyright (c) 2020 Marcelo Cubillos
+ * Licensed under the GPLv3, view LICENSE.txt for more information.
+ *
+ * 2020/09/30 - First revision
+ * 2020/10/01 - Placed I/O within try and catch blocks, added conditionals to
+ *              prevent misuse/crashing of software if it isn't used right.
+ *
+ * rmch_interface.hpp - The main interface object that inherits the QT-generated
+ *                      UI and links the elements to methods.
+ */
 
 #ifndef REMOVEMCHEADERS_RMCH_INTERFACE_HPP
 #define REMOVEMCHEADERS_RMCH_INTERFACE_HPP
 
-#include <string>
 #include "../qt/main_window.hpp"
 
 class RMCHInterface : public QDialog
@@ -22,8 +30,8 @@ private:
     std::vector<std::string> headers;
 
 private:
-    void setInputFileLocation();
-    void setOutputFileLocation();
+    void selectInputFileLocation();
+    void selectOutputFileLocation();
     void setStatus(const std::string& status);
 
 private slots:
