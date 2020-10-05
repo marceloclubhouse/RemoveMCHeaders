@@ -127,7 +127,7 @@ void RMCHInterface::removeHeaders()
             }
             if(!contains)
             {
-                outputFile << inputLine;
+                outputFile << inputLine + "\n";
             }
         }
 
