@@ -6,6 +6,8 @@
  * 2020/09/30 - First revision
  * 2020/10/01 - Placed I/O within try and catch blocks, added conditionals to
  *              prevent misuse/crashing of software if it isn't used right.
+ * 2020/11/03 - Added boolean to correct removal algorithm so files can be
+ *              replaced (i.e. input file == output file)
  *
  * rmch_interface.cpp - The main interface object that inherits the QT-generated
  *                      UI and links the elements to methods.
@@ -14,6 +16,7 @@
 #include <fstream>
 #include <iostream>
 #include <string>
+#include <cstdio>
 #include <QFileDialog>
 #include "rmch_interface.hpp"
 
@@ -110,6 +113,13 @@ void RMCHInterface::removeHeaders()
             return;
         }
 
+        bool replaceFile = false;
+        if(outputFileLocation == inputFileLocation)
+        {
+            replaceFile = true;
+            outputFileLocation = "temp.txt";
+        }
+
         std::ofstream outputFile(outputFileLocation.toStdString());
         std::ifstream inputFile(inputFileLocation.toStdString());
         std::string inputLine;
@@ -133,6 +143,12 @@ void RMCHInterface::removeHeaders()
 
         inputFile.close();
         outputFile.close();
+
+        if(replaceFile)
+        {
+            remove(inputFileLocation.toStdString().c_str());
+            rename("temp.txt", inputFileLocation.toStdString().c_str());
+        }
 
         this->setStatus("Headers successfully removed!");
     }

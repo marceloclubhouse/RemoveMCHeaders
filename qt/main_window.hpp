@@ -1,7 +1,7 @@
 /********************************************************************************
 ** Form generated from reading UI file 'main_window.ui'
 **
-** Created by: Qt User Interface Compiler version 5.15.1
+** Created by: Qt User Interface Compiler version 5.12.3
 **
 ** WARNING! All changes made in this file will be lost when recompiling UI file!
 ********************************************************************************/
@@ -35,7 +35,7 @@ public:
     {
         if (Dialog->objectName().isEmpty())
             Dialog->setObjectName(QString::fromUtf8("Dialog"));
-        Dialog->resize(259, 137);
+        Dialog->resize(261, 137);
         QSizePolicy sizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
         sizePolicy.setHorizontalStretch(0);
         sizePolicy.setVerticalStretch(0);
@@ -51,6 +51,7 @@ public:
 
         lineEdit_location = new QLineEdit(Dialog);
         lineEdit_location->setObjectName(QString::fromUtf8("lineEdit_location"));
+        lineEdit_location->setEnabled(false);
 
         verticalLayout->addWidget(lineEdit_location);
 
@@ -82,11 +83,11 @@ public:
 
     void retranslateUi(QDialog *Dialog)
     {
-        Dialog->setWindowTitle(QCoreApplication::translate("Dialog", "Remove MC Headers", nullptr));
-        label_location->setText(QCoreApplication::translate("Dialog", "File Location", nullptr));
-        pushButton_browse->setText(QCoreApplication::translate("Dialog", "Browse", nullptr));
-        pushButton_remove->setText(QCoreApplication::translate("Dialog", "Remove Headers", nullptr));
-        label_status->setText(QCoreApplication::translate("Dialog", "Select file to remove MC headers from.", nullptr));
+        Dialog->setWindowTitle(QApplication::translate("Dialog", "Remove MC Headers", nullptr));
+        label_location->setText(QApplication::translate("Dialog", "File Location", nullptr));
+        pushButton_browse->setText(QApplication::translate("Dialog", "Browse", nullptr));
+        pushButton_remove->setText(QApplication::translate("Dialog", "Remove Headers", nullptr));
+        label_status->setText(QApplication::translate("Dialog", "Select file to remove MC headers from.", nullptr));
     } // retranslateUi
 
 };

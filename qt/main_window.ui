@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>259</width>
+    <width>261</width>
     <height>137</height>
    </rect>
   </property>
@@ -34,7 +34,11 @@
     </widget>
    </item>
    <item>
-    <widget class="QLineEdit" name="lineEdit_location"/>
+    <widget class="QLineEdit" name="lineEdit_location">
+     <property name="enabled">
+      <bool>false</bool>
+     </property>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout">
