@@ -117,7 +117,8 @@ void RMCHInterface::removeHeaders()
         if(outputFileLocation == inputFileLocation)
         {
             replaceFile = true;
-            outputFileLocation = "temp.txt";
+            rename( inputFileLocation.toStdString().c_str(), "temp.txt");
+            inputFileLocation = "temp.txt";
         }
 
         std::ofstream outputFile(outputFileLocation.toStdString());
@@ -146,8 +147,7 @@ void RMCHInterface::removeHeaders()
 
         if(replaceFile)
         {
-            remove(inputFileLocation.toStdString().c_str());
-            rename("temp.txt", inputFileLocation.toStdString().c_str());
+            remove("temp.txt");
         }
 
         this->setStatus("Headers successfully removed!");
