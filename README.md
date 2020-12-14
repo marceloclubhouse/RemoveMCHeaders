@@ -19,6 +19,6 @@ Download the latest release directly from GitHub
 
 - [Mac OS](https://github.com/marceloclubhouse/RemoveMCHeaders/releases/download/v1.1.0/remove-mc-headers-macos-x86-64.zip)
 - [Linux](https://github.com/marceloclubhouse/RemoveMCHeaders/releases/download/v1.1.0/remove-mc-headers-linux-x86-64.zip)
-- [Windows](https://github.com/marceloclubhouse/RemoveMCHeaders/releases/download/v1.1.0/remove-mc-headers-win-x86-64.zip)
+
 ## License
 This project is licensed under the GPL v3 license. See LICENSE.txt for more information.
