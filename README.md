@@ -18,7 +18,7 @@ This app removes those headers automatically with an easy to use interface that 
 Download the latest release directly from GitHub
 
 - [Mac OS](https://github.com/marceloclubhouse/RemoveMCHeaders/releases/download/v1.1.0/remove-mc-headers-macos-x86-64.zip)
-- [Linux](https://github.com/marceloclubhouse/RemoveMCHeaders/releases/download/v1.1.0/remove-mc-headers-linux-x86-64.zip)
+- [Linux](https://github.com/marceloclubhouse/RemoveMCHeaders/releases/download/v1.1.0/remove-mc-headers-linux-x86-64.tar.xz)
 
 ## License
 This project is licensed under the GPL v3 license. See LICENSE.txt for more information.
